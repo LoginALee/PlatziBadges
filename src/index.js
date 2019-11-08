@@ -1,16 +1,18 @@
-// const element = document.createElement('h1');
-// element.innerText = 'Hello, Platzi Badges!';
-
-// const container = document.getElementById('app');
-
-// container.appendChild(element);
-
 import React from 'react';
-import ReactDOM from 'react-dom';
+import reactDOM from 'react-dom';
+import BadgeNew from './pages/BadgeNew';
+import 'bootstrap/dist/css/bootstrap.css'
+import './global.css';
 
-const element = <h1>Hello, Platzi Badges!</h1>;
+//const jsx = <h1>Hello, Platzi badges</h1>
+//const element = React.createElement('a', {href: 'https://google.com'}, 'Hola, soy los children');
+//const name = 'Aleeee';
+//const element = React.createElement('h1', {}, `Hola, soy ${name}`);
+//const sum = () => 3 + 3;
+//const jsx = <h1>Hola soy, {null}</h1>
+
 
 const container = document.getElementById('app');
 
-// ReactDOM.render(__qué__, __dónde__);
-ReactDOM.render(element, container);
+//reactDOM.render(__qué__, __dónde__);
+reactDOM.render(<BadgeNew />, container);

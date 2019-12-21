@@ -3,6 +3,7 @@ import {  Link  } from 'react-router-dom';
 import './styles/Badges.css';
 import confLogo from '../images/badge-header.svg';
 import BadgesList from  '../components/BadgesList';
+import api from '../api';
 
 class Badges extends React.Component{
 
@@ -11,12 +12,28 @@ class Badges extends React.Component{
         console.log('1. Constructor')
 
         this.state = {
-            "data": []
+            loading: true,
+            error: null,
+            data: undefined,
         };
     
     }
 
+    fetchData = async () => {
+        this.setState({loading: true, error: null});
+
+        try{
+            const data = await api.badges.list();
+            this.setState({loading: false, data: data});
+        }
+        catch(error){
+            this.setState({loading: false, error: error});
+        }
+    }
+
     componentDidMount(){
+        this.fetchData();
+
         console.log('3. ComponentDidMount()');
         this.timeoutId = setTimeout(()=>{
             this.setState({
@@ -72,6 +89,13 @@ class Badges extends React.Component{
     }
 
     render(){
+        if(this.state.loading === true){
+            return 'Loading...';
+        }
+
+        if(this.state.error){
+            return `Error ${this.state.error.message}`;
+        }
         console.log('2. Render()');
         return(
             <React.Fragment>

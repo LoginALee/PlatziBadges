@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import './styles/BadgesList.css';
 import {Link} from 'react-router-dom';
+import Gravatar from './Gravatar';
 
 class BadgesList extends React.Component{
     render(){
@@ -22,8 +23,7 @@ class BadgesList extends React.Component{
                         <div className='container'>
                             <div className="row">
                                 <div className="col-2">
-                                    <img className="BadgesListItem__avatar" src={badge.avatarUrl} alt=""/>
-                                    
+                                    <Gravatar className="BadgesListItem__avatar" email={badge.email} />
                                 </div>
                                 <div className="col-10">
                                     <div className="ml-3">

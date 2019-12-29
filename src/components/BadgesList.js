@@ -20,22 +20,24 @@ class BadgesList extends React.Component{
                 {this.props.badges.map((badge) =>{
                     return(
                         <li className='BadgesListItem' key={badge.id}>
-                        <div className='container'>
-                            <div className="row">
-                                <div className="col-2">
-                                    <Gravatar className="BadgesListItem__avatar" email={badge.email} />
-                                </div>
-                                <div className="col-10">
-                                    <div className="ml-3">
-                                        <span className='font-weight-bold'>{badge.firstName} {badge.lastName}</span>
-                                        <br/>
-                                        <span className='twitterData'><FontAwesomeIcon icon= {faTwitter} /> @{badge.twitter}</span>
-                                        <br/>
-                                        <span>{badge.jobTitle}</span>
+                        <Link className='text-reset text-decoration-none' to={`/badges/${badge.id}/edit`}>
+                            <div className='container'>
+                                <div className="row">
+                                    <div className="col-2">
+                                        <Gravatar className="BadgesListItem__avatar" email={badge.email} />
                                     </div>
-                                </div>
-                            </div>  
-                        </div>
+                                    <div className="col-10">
+                                        <div className="ml-3">
+                                            <span className='font-weight-bold'>{badge.firstName} {badge.lastName}</span>
+                                            <br/>
+                                            <span className='twitterData'><FontAwesomeIcon icon= {faTwitter} /> @{badge.twitter}</span>
+                                            <br/>
+                                            <span>{badge.jobTitle}</span>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </Link>
                         </li>
                     )
                 })}
